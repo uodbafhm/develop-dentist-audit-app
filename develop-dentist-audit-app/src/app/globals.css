@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-cairo), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-plex-arabic), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --color-ink: #0c0e0d;
+  --color-ink-2: #171a19;
+  --color-paper: #f6f5f1;
+  --color-line: #e3e1d7;
+  --color-muted: #6b726d;
+  --color-accent: #00a86b;
+  --color-accent-deep: #067a4e;
+  --color-accent-soft: #d9f3e6;
+  --color-danger: #e5484d;
+  --color-danger-soft: #fae3e3;
+  --color-warn: #e8960c;
+  --color-warn-soft: #faeed3;
+  --color-info: #3d7bf5;
+  --color-info-soft: #e2ecfd;
+
+  --animate-sweep: sweep 7s linear infinite;
+  --animate-blip: blip 2.6s ease-out infinite;
+
+  @keyframes sweep {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes blip {
+    0% {
+      transform: scale(0.35);
+      opacity: 0.9;
+    }
+    70% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+}
+
+::selection {
+  background: #00a86b;
+  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.text-stroke-light {
+  -webkit-text-stroke: 1px rgba(246, 245, 241, 0.28);
+  color: transparent;
+}
+
+.radar-sweep {
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 200, 122, 0.5),
+    rgba(0, 200, 122, 0.12) 55deg,
+    transparent 75deg
+  );
+  border-radius: 9999px;
+  animation: sweep 7s linear infinite;
+}
+
+/* ---------- Print ---------- */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+}
+
+.print-exact {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
